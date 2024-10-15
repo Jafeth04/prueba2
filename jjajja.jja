@@ -1,0 +1,45 @@
+import { error } from 'console';
+import { register } from 'module';
+import { initializeApp } from 'www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
+
+import {sendEmailVerification, getAuth, signInWithPopup, 
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,  
+    onAuthStateChanged} from 'www.gstatic.com/firebasejs/9.0.2/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD9Typ6I1nAT2jcyF8uzNWjD9AyZ9j0kKE",
+  authDomain: "pluni-e5d0e.firebaseapp.com",
+  projectId: "pluni-e5d0e",
+  storageBucket: "pluni-e5d0e.appspot.com",
+  messagingSenderId: "109626506816",
+  appId: "1:109626506816:web:c1ea81ff03203ee97829a5",
+  measurementId: "G-R2MLZWPM07"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+registro.addEventListener('click', (e) => {
+    var email = document.getElementById('emailreg').value;
+    var password = document.getElementById('passwordreg').value;
+    createUserWithEmailAndPassword(auth,email, password).then(cred =>{
+        alert("usuario creado");
+        auth.signOut();
+        sendEmailVerification(auth.currentUser). then(()=>{
+            alert("se ha enviado un correo de verificacion");
+        });
+    }).catch(error =>{
+        const errorCode = error.code;
+        
+        if (errorCode == 'auth/email-already-in-use') 
+            alert('El correo ya está en uso');
+        else if(errorCode =='auth/invalid-email')
+            alert('El correo no es válido');  
+        else if (errorCode == 'auth/weak-password')
+            alert('La contraseña debe tener al menenos 6 caracteres')
+        
+
+    })
+});
+

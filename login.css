@@ -1,0 +1,125 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+/* Colores */
+:root {
+  background-image: url(background.png);
+  --color-borde: #5e2a5e;
+  --color-texto: #ffffff;
+  --color-placeholder: #b5b5b5;
+  --color-boton: #f7f7f7;
+  --color-boton-hover:(65,17,65);
+  --color-boton-texto: #0e0e0e;
+  --color-link: #000000;
+  --color-link-hover: #fdfdfd;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Centrar verticalmente */
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 2px solid var(--color-borde);
+  border-radius: 1rem;
+  max-width: 35rem;
+  background-color: rgba(65,17,65); /* Fondo semi-transparente */
+}
+
+label {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type='text'],
+input[type='password'] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-borde);
+  color: var(--color-texto);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  outline: none;
+  border-color: var(--color-boton);
+}
+
+input[type='text']::placeholder,
+input[type='password']::placeholder {
+  color: var(--color-placeholder);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+}
+
+button {
+  background-color: var(--color-boton);
+  border: none;
+  border-radius: 1rem;
+  color: var(--color-boton-texto);
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type='submit']:hover,
+button[type='button']:hover {
+  background-color: var(--color-boton-hover);
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  form {
+    max-width: none;
+    padding: 1rem; /* Espaciado reducido en pantallas pequeñas */
+  }
+}

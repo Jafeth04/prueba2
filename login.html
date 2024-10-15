@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="login.css" rel="stylesheet" type="text/css"/>
+    <title>Formulario de inicio de sesión</title>
+</head>
+<body>
+    <h2>Inicio de sesión</h2>
+    <form>
+        <label for="username">Correo:</label>
+        <input type="text" id="emaillog" name="username" required>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="passwordlog" name="password" required>
+        
+        <a href="asistencia.html"><button type="submit" id="login">Ingresar</button></a>
+        <button type="button" id="cerrar">Cerrar Sesión</button> <!-- Cambiado a type="button" -->
+    </form>
+    <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+    <script type="module" src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+import { error } from 'console';
+import { getApps } from 'firebase/app';
+import { register } from 'module';
+import { initializeApp } from 'www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
+
+import {sendEmailVerification, getAuth, signInWithPopup, 
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,  
+    onAuthStateChanged} from 'www.gstatic.com/firebasejs/9.0.2/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD9Typ6I1nAT2jcyF8uzNWjD9AyZ9j0kKE",
+  authDomain: "pluni-e5d0e.firebaseapp.com",
+  projectId: "pluni-e5d0e",
+  storageBucket: "pluni-e5d0e.appspot.com",
+  messagingSenderId: "109626506816",
+  appId: "1:109626506816:web:c1ea81ff03203ee97829a5",
+  measurementId: "G-R2MLZWPM07"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+login.addEventListener('click', (e) => {
+  var email = document.getElementById('emaillog').value;
+  var password = document.getElementById('passwordlog').value;
+  signInWithEmailAndPassword(auth, email, password).then(cred => {
+  alert ("Usuario logueado");
+  console.log(cred.user);
+  }).catch(error => {
+  I
+  const errorCode = error.code;
+  if (errorCode =='auth/invalid-email')
+  alert('El correo no es válido');
+  else if (errorCode =='auth/user-disabled')
+  alert('El usuario ha sido deshabilitado');
+  else if (errorCode == 'auth/user-not-found')
+  alert('El usuario no existe');
+  else if (errorCode == 'auth/wrong-password')
+  alert('Contraseña incorrecta');
+  });
+  });
+  cerrar.addEventListener('click', (e) =>{
+    auth.signOut().then(() => {
+      alert('Seccion Cerrada');
+    }).catch((error)=>{
+      alert('Error al Cerrar Seccion');
+    }); 
+  })
+
+
+  auth.onAuthStateChanged(user=>{
+if (user){
+  console.log("usurio activo ");
+  var email = user.emailVerified;
+  if(email){
+    window.open("https://www.youtube.com/watch?v=UGB_Bsm5Unk&list=RDkIEWJ1ljEro&index=11")
+  }else{
+    auth.signOut();
+  }
+}else{
+  console.log("Usuario Inactivo");
+}
+  });
